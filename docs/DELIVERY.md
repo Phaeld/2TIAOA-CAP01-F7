@@ -8,7 +8,7 @@ Atualização: 31/10/2026. Preencher apenas com resultados verificados.
 | Privacidade e tutor | Pendente: observado público, requer proprietário |
 | Vercel pública | Conta conectada; publicação pendente |
 | Backend público | Pendente |
-| CI/CD Git | CI remoto aprovado no commit 50e2d4e; deploy automático depende de token/configuração |
+| CI/CD Git | Backend, Web e Mobile aprovados no CI remoto; deploy automático depende de token/configuração |
 | EAS / APK | Projeto yancotta/cardioia-fiap-final criado; bundle validado, build EAS pendente |
 | Android físico | Pendente: aparelho, Android, data, login e painel |
 | Wokwi | Raphael: simulação e link público pendentes |
@@ -23,6 +23,8 @@ Atualização: 31/10/2026. Preencher apenas com resultados verificados.
 Caso de referência F6: probabilidade 0,99, classe HIGH, protocolos P02/P05/P08/P10. Web: build concluído. Mobile: dependências compatíveis e export Android concluído, **não é APK assinado**. ResNet50/Grad-CAM executados com imagem sintética para smoke de runtime, **não é avaliação de acurácia**.
 
 Navegador local: login real e envio normal/alerta atualizaram painel (132 bpm, 39,1 °C, alertas HIGH e risco operacional LOW 18,5%, corretamente separados).
+
+Evidência local: [painel com leitura e alerta](evidence/local-dashboard.jpg). Validados também login, estado sem sinal e indicação de visão desativada no perfil gratuito. Esta imagem não comprova hospedagem pública.
 
 ## Evidências a coletar
 
@@ -43,4 +45,4 @@ Guardar imagens sem segredos em `docs/evidence/`. Identificar prints locais como
 - 03:40-04:15: desconexão/estado antigo e erro.
 - 04:15-04:40: links, CI/CD, README, PDF e limitações.
 
-CI inicial verificado: https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/runs/41210963040. PR de integração: https://github.com/Phaeld/2TIAOA-CAP01-F7/pull/1.
+CI verificado: https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/runs/41211945766. Histórico por branch: https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/workflows/ci.yml. PR de integração: https://github.com/Phaeld/2TIAOA-CAP01-F7/pull/1.

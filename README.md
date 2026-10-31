@@ -6,13 +6,13 @@
 
 ## Estado da entrega
 
-Código integrado implementado e validado localmente. Publicação, APK instalado, Wokwi e evidências finais ainda precisam ser concluídos. Estado detalhado em [docs/DELIVERY.md](docs/DELIVERY.md).
+Código integrado implementado, validado localmente e aprovado no CI remoto. Publicação, APK instalado, Wokwi e evidências finais ainda precisam ser concluídos. Estado detalhado em [docs/DELIVERY.md](docs/DELIVERY.md).
 
 | Entregável | Link / estado |
 |---|---|
 | Web Vercel | Pendente de deploy verificado |
 | Backend | Local http://127.0.0.1:8000/docs; URL pública pendente |
-| EAS / APK | Perfil preview configurado; build pendente |
+| EAS / APK | [Projeto Expo](https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final); build pendente |
 | Wokwi | Raphael; [handoff](IoT/README.md) |
 | Relatório | [PDF técnico](docs/relatorio-tecnico.pdf), rascunho a fechar com evidências |
 | Vídeo até 5 min | Pendente; [roteiro](docs/DELIVERY.md) |
