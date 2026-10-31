@@ -8,7 +8,8 @@ services:
     dockerContext: .
     plan: free
     healthCheckPath: /health
-    autoDeployTrigger: checksPass
+    # GitHub Actions deploys the tested commit through the Render API.
+    autoDeployTrigger: off
     envVars:
       - key: CARDIOIA_SECRET
         generateValue: true

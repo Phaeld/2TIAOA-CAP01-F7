@@ -4,7 +4,7 @@ Um backend Python, Web na Vercel e APK via Expo EAS. Não há banco externo obri
 
 ## Ambiente publicado em 31/10/2026
 
-Web: https://cardioia-fiap-final.vercel.app. API: https://cardioia-api-6efu.onrender.com. Gemini validado pela API pública e pela Web. CI/CD GitHub Actions → Vercel comprovado: [execução](https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/runs/41214343191). Render: `srv-dbj0d6flk1mc73ftu9g0`, plano `free`, região Virginia, branch `main`, auto-deploy após checks. Segredos estão nos serviços e no GitHub Actions, nunca no código.
+Web: https://cardioia-fiap-final.vercel.app. API: https://cardioia-api-6efu.onrender.com. Gemini validado pela API pública e pela Web. CI/CD GitHub Actions → Vercel comprovado: [execução](https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/runs/41214343191). Render: `srv-dbj0d6flk1mc73ftu9g0`, plano `free`, região Virginia, branch `main`, deploy via GitHub Actions após testes. Segredos estão nos serviços e no GitHub Actions, nunca no código.
 
 ## Backend Render
 
@@ -16,7 +16,7 @@ Perfil escolhido por Yan em 31/10/2026: **gratuito; hospedagem de visão adiada*
 
 **Perfil completo:** instância de pelo menos 2 GB (`1c-2g`, antigo Standard), build arg `ENABLE_VISION=true`, runtime `CARDIOIA_VISION_ENABLED=true`, disco persistente 1 GB em `/app/data`, `CARDIOIA_DB_PATH=/app/data/cardioia.db`. Custo depende de aprovação do responsável. Não declarar integração completa da visão com perfil gratuito.
 
-Configurar integração Git, branch de produção e `autoDeployTrigger: checksPass`. Validar login, leitura, Gemini e imagem na URL real. Modelo de visão é carregado sob demanda; o primeiro upload é mais lento.
+O job `deploy-backend` solicita à API Render o SHA que passou no CI e aguarda o estado `live`. Configurar secret `RENDER_API_KEY` e variable `RENDER_SERVICE_ID`. Deixar `autoDeployTrigger: off` para evitar deploy duplicado pela integração Git. Validar login, leitura, Gemini e imagem na URL real. Modelo de visão é carregado sob demanda; o primeiro upload é mais lento.
 
 ## Vercel
 
@@ -52,8 +52,10 @@ Fontes: [Vercel](https://vercel.com/docs/project-configuration/vercel-json), [EA
 
 ## CI/CD via GitHub Actions
 
-A conexão Git direta Vercel → repositório Phaeld não foi autorizada pela integração. Alternativa preparada: job `deploy-web` após backend/web/mobile passarem em cada push de `main`. Configurar secret `VERCEL_TOKEN`, variables `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID`, e `CARDIOIA_DEPLOY_ENABLED=true` somente após o backend e `VITE_API_URL` estarem prontos. Sem essa variável, o deploy é explicitamente ignorado; testes/builds continuam ativos. A variável está habilitada neste ambiente e a publicação por push foi validada.
+A conexão Git direta Vercel → repositório Phaeld não foi autorizada pela integração. Alternativa ativa: job `deploy-web` após backend/web/mobile passarem em cada push de `main`. Configurar secret `VERCEL_TOKEN`, variables `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID`, e `CARDIOIA_DEPLOY_ENABLED=true` somente após o backend e `VITE_API_URL` estarem prontos. Sem essa variável, o deploy é explicitamente ignorado; testes/builds continuam ativos. A variável está habilitada neste ambiente e a publicação por push foi validada.
 
 Projeto Vercel criado: `fiap-fase-7/cardioia-fiap-final`. Projeto Expo criado: https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final. A sessão OAuth da CLI Vercel não permite criar tokens; em uma reinstalação, criar um token de deploy em Account Settings > Tokens e salvá-lo localmente com `python3 scripts/configure_services.py --provider vercel`. Usar escopo do projeto/equipe FIAP quando disponível.
 
 Gemini padrão atualizado para `gemini-3.5-flash-lite`, também usado na F6. O acesso a modelos 2.5 é restrito para novos projetos: [nota oficial de 18/09/2026](https://ai.google.dev/gemini-api/docs/changelog?release=09-18-2026).
+
+O auto-deploy Git nativo do Render não disparou neste repositório de colaborador. Por isso, o workflow também publica o backend pela API Render, sem mudar o plano gratuito. O job falha se o build/deploy falhar ou não chegar ao estado `live` no prazo.

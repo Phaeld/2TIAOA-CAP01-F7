@@ -63,3 +63,47 @@ jobs:
           test -n "$VERCEL_ORG_ID" && test -n "$VERCEL_PROJECT_ID"
       - name: Deploy to Vercel
         run: npx --yes vercel@65.9.0 deploy --prod --yes --token "$VERCEL_TOKEN"
+  deploy-backend:
+    needs: [backend, web, mobile]
+    if: vars.CARDIOIA_DEPLOY_ENABLED == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    concurrency:
+      group: render-production
+      cancel-in-progress: false
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      RENDER_SERVICE_ID: ${{ vars.RENDER_SERVICE_ID }}
+    steps:
+      - name: Deploy tested commit and wait for Render
+        run: |
+          python3 - <<'PY'
+          import json, os, time
+          from urllib.request import Request, urlopen
+          key = os.environ['RENDER_API_KEY']
+          service = os.environ['RENDER_SERVICE_ID']
+          if not key or not service:
+              raise SystemExit('Configure RENDER_API_KEY and RENDER_SERVICE_ID.')
+          base = 'https://api.render.com/v1/services/' + service + '/deploys'
+          def request(url, payload=None):
+              data = json.dumps(payload).encode() if payload is not None else None
+              req = Request(url, data=data, headers={'Authorization': 'Bearer '+key, 'Content-Type': 'application/json'})
+              with urlopen(req, timeout=40) as response:
+                  return json.load(response)
+          deploy = request(base, {'commitId': os.environ['GITHUB_SHA'], 'clearCache': 'do_not_clear'})
+          print('Render deploy:', deploy['id'], flush=True)
+          previous = None
+          for _ in range(110):
+              result = request(base + '/' + deploy['id'])
+              status = result['status']
+              if status != previous:
+                  print('Render status:', status, flush=True)
+                  previous = status
+              if status == 'live':
+                  break
+              if status in {'build_failed', 'update_failed', 'pre_deploy_failed', 'canceled', 'deactivated'}:
+                  raise SystemExit('Render deployment failed: '+status)
+              time.sleep(5)
+          else:
+              raise SystemExit('Timed out waiting for Render deployment.')
+          PY
