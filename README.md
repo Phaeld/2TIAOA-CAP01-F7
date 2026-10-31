@@ -11,7 +11,7 @@ Código integrado implementado, validado localmente e aprovado no CI remoto. Pub
 | Entregável | Link / estado |
 |---|---|
 | Web Vercel | Pendente de deploy verificado |
-| Backend | Local http://127.0.0.1:8000/docs; URL pública pendente |
+| Backend | https://cardioia-api-6efu.onrender.com/docs |
 | EAS / APK | [Projeto Expo](https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final); build pendente |
 | Wokwi | Raphael; [handoff](IoT/README.md) |
 | Relatório | [PDF técnico](docs/relatorio-tecnico.pdf), rascunho a fechar com evidências |

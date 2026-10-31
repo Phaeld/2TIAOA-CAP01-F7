@@ -4,13 +4,14 @@
   "web_project": "fiap-fase-7/cardioia-fiap-final",
   "expo_project_url": "https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final",
   "web_url": null,
-  "api_url": null,
+  "api_url": "https://cardioia-api-6efu.onrender.com",
   "expo_build_url": null,
   "local_tests_passed": 27,
   "vision_hosting": "deferred_by_user",
-  "gemini": "pending_key",
-  "render": "pending_api_key",
-  "vercel_ci": "pending_deploy_token",
+  "gemini": "live_request_validated",
+  "render": "live_free",
+  "vercel_ci": "configured_awaiting_first_deploy",
   "wokwi": "Raphael",
-  "physical_android_validation": "pending"
+  "physical_android_validation": "pending",
+  "render_service_id": "srv-dbj0d6flk1mc73ftu9g0"
 }

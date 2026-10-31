@@ -7,12 +7,12 @@ Atualização: 31/10/2026. Preencher apenas com resultados verificados.
 | Repositório | https://github.com/Phaeld/2TIAOA-CAP01-F7 |
 | Privacidade e tutor | Pendente: observado público, requer proprietário |
 | Vercel pública | Conta conectada; publicação pendente |
-| Backend público | Pendente |
-| CI/CD Git | Backend, Web e Mobile aprovados no CI remoto; deploy automático depende de token/configuração |
+| Backend público | https://cardioia-api-6efu.onrender.com — health OK, plano gratuito |
+| CI/CD Git | Backend, Web e Mobile aprovados no CI remoto; deploy automático habilitado; primeira publicação aguardando verificação |
 | EAS / APK | Projeto yancotta/cardioia-fiap-final criado; bundle validado, build EAS pendente |
 | Android físico | Pendente: aparelho, Android, data, login e painel |
 | Wokwi | Raphael: simulação e link público pendentes |
-| Gemini real | Aguardando chave e chamada de validação |
+| Gemini real | Chave configurada; primeira chamada real validada |
 | Vídeo até 5 min | Pendente |
 | PDF até 5 páginas | Rascunho técnico; fechar após deploy/evidências |
 
