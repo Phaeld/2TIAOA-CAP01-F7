@@ -2,13 +2,20 @@
 from pathlib import Path
 from getpass import getpass
 import re
+import argparse
+
+parser=argparse.ArgumentParser()
+parser.add_argument("--provider", choices=["gemini","render","vercel"])
+args=parser.parse_args()
 
 root = Path(__file__).resolve().parents[1]
 path = root / '.env'
 if not path.exists():
     raise SystemExit('Execute primeiro: python3 scripts/setup_local.py')
 text = path.read_text()
-for name, label in [('GEMINI_API_KEY','Chave Gemini (Google AI Studio)'),('RENDER_API_KEY','API key Render (Account Settings > API Keys)')]:
+for name, label in [('GEMINI_API_KEY','Chave Gemini (Google AI Studio)'),('RENDER_API_KEY','API key Render (Account Settings > API Keys)'),('VERCEL_DEPLOY_TOKEN','Token Vercel para CI/CD (Account Settings > Tokens)')]:
+    if args.provider and not name.lower().startswith(args.provider):
+        continue
     value = getpass(label+' [Enter mantém valor atual]: ').strip()
     if value:
         if not re.fullmatch(r'[A-Za-z0-9_.-]+',value):

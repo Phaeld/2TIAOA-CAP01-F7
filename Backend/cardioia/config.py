@@ -20,7 +20,7 @@ class Settings:
     db_path: str = "./data/cardioia.db"
     origins: tuple[str, ...] = ("http://localhost:5173",)
     gemini_key: str = ""
-    gemini_model: str = "gemini-2.5-flash"
+    gemini_model: str = "gemini-3.5-flash-lite"
     vision_enabled: bool = False
 
     def validate(self):
@@ -40,6 +40,6 @@ class Settings:
             db_path=os.getenv("CARDIOIA_DB_PATH", str(ROOT / "data/cardioia.db")),
             origins=tuple(x.strip() for x in os.getenv("CARDIOIA_CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if x.strip()),
             gemini_key=os.getenv("GEMINI_API_KEY", ""),
-            gemini_model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
+            gemini_model=os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"),
             vision_enabled=os.getenv("CARDIOIA_VISION_ENABLED", "false").lower() == "true",
         )

@@ -5,8 +5,34 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "splash": {"resizeMode":"contain","backgroundColor":"#0c3035"},
-    "android": {"package":"br.com.cardioia.fiap","versionCode":1,"permissions":[],"blockedPermissions":["android.permission.RECORD_AUDIO"]},
-    "plugins": ["expo-secure-store", ["expo-image-picker", {"photosPermission":"Selecione uma radiografia de teste para a demonstração acadêmica.","microphonePermission":false,"cameraPermission":false}]]
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0c3035"
+    },
+    "android": {
+      "package": "br.com.cardioia.fiap",
+      "versionCode": 1,
+      "permissions": [],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Selecione uma radiografia de teste para a demonstração acadêmica.",
+          "microphonePermission": false,
+          "cameraPermission": false
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "cfd6bf5b-869a-4a00-a7bf-4f02ce5cc59e"
+      }
+    },
+    "owner": "yancotta"
   }
 }

@@ -108,7 +108,7 @@ npm ci --prefix Web && npm run build --prefix Web
 cd Mobile && npm ci && npx expo install --check && npx expo export --platform android
 ```
 
-Validação local inicial: **23 testes**, build Web e bundle Android passando; ResNet50/Grad-CAM executados em smoke de runtime. Contrato Gemini testado com transporte simulado; chamada real requer chave. [Evidências](docs/DELIVERY.md).
+Validação local inicial: **27 testes**, build Web e bundle Android passando; ResNet50/Grad-CAM executados em smoke de runtime. Contrato Gemini testado com transporte simulado; chamada real requer chave. [Evidências](docs/DELIVERY.md).
 
 ## Checklist FIAP
 

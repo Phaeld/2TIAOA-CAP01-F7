@@ -1,0 +1,14 @@
+.git/
+.venv/
+**/.env*
+Backend/
+Web/
+IoT/
+docs/
+scripts/
+work/
+data/
+**/node_modules/
+**/dist/
+**/__pycache__/
+.vercel/

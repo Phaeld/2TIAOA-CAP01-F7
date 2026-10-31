@@ -6,9 +6,9 @@ Um backend Python, Web na Vercel e APK via Expo EAS. Não há banco externo obri
 
 Raiz do repositório como contexto, `Backend/Dockerfile`, health check `/health`, porta `$PORT`, um worker.
 
-Variáveis: `CARDIOIA_SECRET` (mínimo 32 caracteres), `CARDIOIA_DEMO_PASSWORD` (12), `CARDIOIA_DEVICE_KEY` (24), `CARDIOIA_CORS_ORIGINS` (URL Vercel exata), `GEMINI_API_KEY`, `GEMINI_MODEL=gemini-2.5-flash`. Somente dados simulados. Segredos ficam no servidor.
+Variáveis: `CARDIOIA_SECRET` (mínimo 32 caracteres), `CARDIOIA_DEMO_PASSWORD` (12), `CARDIOIA_DEVICE_KEY` (24), `CARDIOIA_CORS_ORIGINS` (URL Vercel exata), `GEMINI_API_KEY`, `GEMINI_MODEL=gemini-3.5-flash-lite`. Somente dados simulados. Segredos ficam no servidor.
 
-`render.yaml` prepara perfil gratuito: sensores, risco, NLP e chat, sem TensorFlow. A rota de visão retorna 503 honestamente. Histórico SQLite é efêmero nesse perfil e pode ser perdido ao reiniciar/republicar; o serviço pode suspender por inatividade.
+Perfil escolhido por Yan em 31/10/2026: **gratuito; hospedagem de visão adiada**. `render.yaml` prepara esse perfil: sensores, risco, NLP e chat, sem TensorFlow. A rota de visão retorna 503 honestamente. Histórico SQLite é efêmero nesse perfil e pode ser perdido ao reiniciar/republicar; o serviço pode suspender por inatividade.
 
 **Perfil completo:** instância de pelo menos 2 GB (`1c-2g`, antigo Standard), build arg `ENABLE_VISION=true`, runtime `CARDIOIA_VISION_ENABLED=true`, disco persistente 1 GB em `/app/data`, `CARDIOIA_DB_PATH=/app/data/cardioia.db`. Custo depende de aprovação do responsável. Não declarar integração completa da visão com perfil gratuito.
 
@@ -46,3 +46,11 @@ Ao terminar, registrar link do build e APK em `docs/DELIVERY.md` e README. Baixa
 Em 31/10/2026, F7 estava público e YanCotta possuía `WRITE`, não `ADMIN`. Phaeld precisa torná-lo privado e adicionar o tutor (conta GitHub a confirmar), verificando depois acesso das integrações. Não declarar esse requisito cumprido antes da alteração real.
 
 Fontes: [Vercel](https://vercel.com/docs/project-configuration/vercel-json), [EAS APK](https://docs.expo.dev/build-reference/apk/), [Render discos](https://render.com/docs/disks).
+
+## CI/CD via GitHub Actions
+
+A conexão Git direta Vercel → repositório Phaeld não foi autorizada pela integração. Alternativa preparada: job `deploy-web` após backend/web/mobile passarem em cada push de `main`. Configurar secret `VERCEL_TOKEN`, variables `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID`, e `CARDIOIA_DEPLOY_ENABLED=true` somente após o backend e `VITE_API_URL` estarem prontos. Sem essa variável, o deploy é explicitamente ignorado; testes/builds continuam ativos. Isso ainda não comprova CD em produção.
+
+Projeto Vercel criado: `fiap-fase-7/cardioia-fiap-final`. Projeto Expo criado: https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final. A sessão OAuth da CLI Vercel não permite criar tokens; o responsável deve criar um token de deploy em Account Settings > Tokens e salvá-lo localmente com `python3 scripts/configure_services.py --provider vercel`. Usar escopo do projeto/equipe FIAP quando disponível.
+
+Gemini padrão atualizado para `gemini-3.5-flash-lite`, também usado na F6. O acesso a modelos 2.5 é restrito para novos projetos: [nota oficial de 18/09/2026](https://ai.google.dev/gemini-api/docs/changelog?release=09-18-2026).

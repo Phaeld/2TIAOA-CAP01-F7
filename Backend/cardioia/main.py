@@ -146,7 +146,7 @@ def create_app(settings=None):
         return {"patient": {"id": config.patient_id, "name": "Paciente demonstração", "synthetic": True},
                 "latest": latest, "history": readings, "stale": age is None or age > 30,
                 "age_seconds": round(max(age, 0)) if age is not None else None,
-                "chat_provider": "gemini" if config.gemini_key else "local_fallback", "disclaimer": DISCLAIMER}
+                "chat_provider": "gemini" if config.gemini_key else "local_fallback", "vision_enabled": config.vision_enabled, "disclaimer": DISCLAIMER}
 
     @app.post("/api/v1/demo/reading", dependencies=[Depends(user)])
     def demo(scenario: Literal["normal", "alert", "emergency"] = "normal"):

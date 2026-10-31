@@ -19,3 +19,5 @@ data/
 IoT/config.py
 work/
 .DS_Store
+.vercel
+.env*

@@ -123,7 +123,7 @@ def test_nlp_and_honest_fallback(client,auth):
     assert result['sources']
 
 
-def test_provider_uses_real_prediction_and_sanitizes_errors(settings,monkeypatch):
+def test_provider_uses_real_prediction(settings,monkeypatch):
     from cardioia.services import chat
     captured=[]
     async def handler(request):
@@ -140,6 +140,29 @@ def test_provider_uses_real_prediction_and_sanitizes_errors(settings,monkeypatch
         assert response.json()['source']=='gemini'
         context=json.loads(captured[0]['contents'][0]['parts'][0]['text'])
         assert context['phase6_latest_prediction']['source']=='phase6_random_forest'
+
+
+@pytest.mark.parametrize('provider_status', [403, 429, 500])
+def test_provider_failure_is_reported_without_leaking_secrets(settings,monkeypatch,provider_status):
+    from cardioia.services import chat
+    async def handler(request):
+        return httpx.Response(provider_status,json={'error':'private-provider-detail-test-key'})
+    original=httpx.AsyncClient
+    monkeypatch.setattr(chat.httpx,'AsyncClient',lambda **kw:original(transport=httpx.MockTransport(handler),**kw))
+    with TestClient(create_app(replace(settings,gemini_key='test-key'))) as client:
+        token=client.post('/api/v1/auth/login',json={'email':settings.email,'password':settings.password}).json()['access_token']
+        response=client.post('/api/v1/chat',headers={'Authorization':'Bearer '+token},json={'message':'Explique o resultado'})
+        assert response.status_code==503
+        assert 'test-key' not in response.text
+        assert 'private-provider' not in response.text
+
+
+def test_invalid_image_fails_before_loading_tensorflow(settings):
+    with TestClient(create_app(replace(settings,vision_enabled=True))) as client:
+        token=client.post('/api/v1/auth/login',json={'email':settings.email,'password':settings.password}).json()['access_token']
+        response=client.post('/api/v1/vision',headers={'Authorization':'Bearer '+token},files={'image':('bad.png',b'invalid','image/png')})
+        assert response.status_code==422
+        assert client.app.state.vision.model is None
 
 
 def test_vision_requires_auth_and_reports_unavailable(client,auth):

@@ -8,8 +8,8 @@ Atualização: 31/10/2026. Preencher apenas com resultados verificados.
 | Privacidade e tutor | Pendente: observado público, requer proprietário |
 | Vercel pública | Conta conectada; publicação pendente |
 | Backend público | Pendente |
-| CI/CD Git | Workflow criado; execução remota e conexão deploy pendentes |
-| EAS / APK | Bundle Android validado; build EAS pendente |
+| CI/CD Git | CI remoto aprovado no commit 50e2d4e; deploy automático depende de token/configuração |
+| EAS / APK | Projeto yancotta/cardioia-fiap-final criado; bundle validado, build EAS pendente |
 | Android físico | Pendente: aparelho, Android, data, login e painel |
 | Wokwi | Raphael: simulação e link público pendentes |
 | Gemini real | Aguardando chave e chamada de validação |
@@ -18,7 +18,7 @@ Atualização: 31/10/2026. Preencher apenas com resultados verificados.
 
 ## Verificação local
 
-23 testes passaram: autenticação/expiração, chaves e escopo, tipos/faixas, idempotência e conflito, persistência, ordenação, estado antigo, saída original da fase 6, NLP, fallback, contrato do provedor, visão desativada, limite de corpo e CORS.
+27 testes passaram: autenticação/expiração, chaves e escopo, tipos/faixas, idempotência e conflito, persistência, ordenação, estado antigo, saída original da fase 6, NLP, fallback, contrato do provedor, visão desativada, limite de corpo e CORS.
 
 Caso de referência F6: probabilidade 0,99, classe HIGH, protocolos P02/P05/P08/P10. Web: build concluído. Mobile: dependências compatíveis e export Android concluído, **não é APK assinado**. ResNet50/Grad-CAM executados com imagem sintética para smoke de runtime, **não é avaliação de acurácia**.
 
@@ -42,3 +42,5 @@ Guardar imagens sem segredos em `docs/evidence/`. Identificar prints locais como
 - 03:00-03:40: APK instalado, mesmo evento; imagem se perfil completo ativo.
 - 03:40-04:15: desconexão/estado antigo e erro.
 - 04:15-04:40: links, CI/CD, README, PDF e limitações.
+
+CI inicial verificado: https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/runs/41210963040. PR de integração: https://github.com/Phaeld/2TIAOA-CAP01-F7/pull/1.
