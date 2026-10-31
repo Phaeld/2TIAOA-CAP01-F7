@@ -1,0 +1,12 @@
+Backend/
+Mobile/
+IoT/
+docs/
+scripts/
+work/
+.venv/
+.env*
+data/
+**/node_modules/
+**/dist/
+**/__pycache__/

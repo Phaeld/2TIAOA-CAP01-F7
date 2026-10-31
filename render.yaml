@@ -1,0 +1,26 @@
+# Basic free profile. SQLite history resets on restart/redeploy on the free tier.
+# For durable storage + phase-four TensorFlow use the documented paid profile.
+services:
+  - type: web
+    name: cardioia-api
+    runtime: docker
+    dockerfilePath: ./Backend/Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /health
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: CARDIOIA_SECRET
+        generateValue: true
+      - key: CARDIOIA_DEMO_PASSWORD
+        generateValue: true
+      - key: CARDIOIA_DEVICE_KEY
+        generateValue: true
+      - key: CARDIOIA_CORS_ORIGINS
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: CARDIOIA_VISION_ENABLED
+        value: 'false'

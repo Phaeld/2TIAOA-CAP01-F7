@@ -1,0 +1,226 @@
+[
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F1",
+    "commit": "794a390e701b38883a54bf131e632da4457aa81e",
+    "source": "data/processed/texts/article03_clean.txt",
+    "destination": "Backend/cardioia/assets/knowledge/article03_clean.txt",
+    "sha256": "bede16a4c09b481d6bd1cc3c19fd3d0526a6f02d031bee5b6bd5e99810c69bcd"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F1",
+    "commit": "794a390e701b38883a54bf131e632da4457aa81e",
+    "source": "data/processed/texts/article02_clean.txt",
+    "destination": "Backend/cardioia/assets/knowledge/article02_clean.txt",
+    "sha256": "b6166715772857f69aed3fff35c9a9be27487539d28d45066d9293f85888e623"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F1",
+    "commit": "794a390e701b38883a54bf131e632da4457aa81e",
+    "source": "data/processed/texts/article01_clean.txt",
+    "destination": "Backend/cardioia/assets/knowledge/article01_clean.txt",
+    "sha256": "3d06e50a7655a1a3e2d7d01bc8f64208c34f06a488caeeb410afd9140c100af4"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardio-ia-diagnostic-phase-2",
+    "commit": "4b367f78bbd4e2e92c3a457c94a4a1e11dcfe6be",
+    "source": "parte_2_classificacao/dados_risco.csv",
+    "destination": "Backend/cardioia/assets/dados_risco.csv",
+    "sha256": "da2740b967ac44cbf2c8ee04b96b48e8509b6b6e9c25cb60d2868eb1230f6f82"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardio-ia-diagnostic-phase-2",
+    "commit": "4b367f78bbd4e2e92c3a457c94a4a1e11dcfe6be",
+    "source": "parte_1_extracao/mapa_doencas.csv",
+    "destination": "Backend/cardioia/assets/mapa_doencas.csv",
+    "sha256": "ad6e7521df75fb0ef16fb974327ebdbb351fc99a2a94ae9f9287257377824091"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "src/models/risk_model.joblib",
+    "destination": "Backend/cardioia/assets/risk_model.joblib",
+    "sha256": "58d74737f27abc5caa74c7601964a4422119b07b075ace2d7548b66e1c8137b8"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "src/agents/agent_ml.py",
+    "destination": "Backend/cardioia/legacy/agent_ml.py",
+    "sha256": "11bed5766fa98dabaca883d46f4fb093408b2418ad34b0582026ebbd24a8db2b"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "src/agents/protocol_agent.py",
+    "destination": "Backend/cardioia/legacy/protocol_agent.py",
+    "sha256": "7682b2d1217da0edd61025870665eb05bc13d4fffc6f41a13209487e7bbe172c"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardioia-visao-computacional-fase4",
+    "commit": "106c31c69c43af83be00fd25aa8e230e6899a296",
+    "source": "modelos/resnet50_finetuned.keras",
+    "destination": "Backend/cardioia/assets/resnet50_finetuned.keras",
+    "sha256": "33b8d380a8f40fe7e8a046fefe7e151eaf6930d5bba164528488cda5ad368dd2"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F1",
+    "commit": "794a390e701b38883a54bf131e632da4457aa81e",
+    "source": "src/text_preprocessing.py",
+    "destination": "docs/origins/2TIAOA-CAP01-F1/src/text_preprocessing.py",
+    "sha256": "c5a366979fa2983d5eecbc491ce72c5c20f3b83918319dbec3694410dc6b7527"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F1",
+    "commit": "794a390e701b38883a54bf131e632da4457aa81e",
+    "source": "README.md",
+    "destination": "docs/origins/2TIAOA-CAP01-F1/README.md",
+    "sha256": "0fb13cc03bcf904332c5de38e53f98a9c3432a4f7127ec6fa019ea19ad9205d0"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardio-ia-diagnostic-phase-2",
+    "commit": "4b367f78bbd4e2e92c3a457c94a4a1e11dcfe6be",
+    "source": "parte_1_extracao/classificador_simples.py",
+    "destination": "docs/origins/cardio-ia-diagnostic-phase-2/parte_1_extracao/classificador_simples.py",
+    "sha256": "ab1046f36fe08a5d924e135909b957d78f7c40b31c4d617b393411c7f7a7855f"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardio-ia-diagnostic-phase-2",
+    "commit": "4b367f78bbd4e2e92c3a457c94a4a1e11dcfe6be",
+    "source": "parte_2_classificacao/modelo_risco.ipynb",
+    "destination": "docs/origins/cardio-ia-diagnostic-phase-2/parte_2_classificacao/modelo_risco.ipynb",
+    "sha256": "7b63d113a9dc19dab8756a2f9d41f0b5fa7d6878c97653e53bd6bd447cbb8c22"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardio-ia-diagnostic-phase-2",
+    "commit": "4b367f78bbd4e2e92c3a457c94a4a1e11dcfe6be",
+    "source": "ir_alem_1_portal/portal-cardioia/src/contexts/AuthContext.jsx",
+    "destination": "docs/origins/cardio-ia-diagnostic-phase-2/ir_alem_1_portal/portal-cardioia/src/contexts/AuthContext.jsx",
+    "sha256": "56acd81a7c0f5d7432e03a2fb4fecff4eddbdab1bae538b4b3c4c4659c808c81"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardio-ia-diagnostic-phase-2",
+    "commit": "4b367f78bbd4e2e92c3a457c94a4a1e11dcfe6be",
+    "source": "ir_alem_1_portal/portal-cardioia/src/pages/Dashboard.jsx",
+    "destination": "docs/origins/cardio-ia-diagnostic-phase-2/ir_alem_1_portal/portal-cardioia/src/pages/Dashboard.jsx",
+    "sha256": "0c901bc08941e0c8409e3039371ca7113badc9e69fbd926a7ff003a9534d8c4b"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F3",
+    "commit": "e433826b70f83593ec9084468afe1f1f927154d4",
+    "source": "src/automation/rest_email/app/services/risk_analysis_service.py",
+    "destination": "docs/origins/2TIAOA-CAP01-F3/src/automation/rest_email/app/services/risk_analysis_service.py",
+    "sha256": "a0dc176ca1eb2f2bcecf7d40054e87d9aba02b65290adf8d0fa4c29cc87a7b78"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F3",
+    "commit": "e433826b70f83593ec9084468afe1f1f927154d4",
+    "source": "src/edge/esp32-edge/src/main.cpp",
+    "destination": "docs/origins/2TIAOA-CAP01-F3/src/edge/esp32-edge/src/main.cpp",
+    "sha256": "f4342377e3b39b24bcda628736b8507157db8f2e7eadfb77c73c2de93e6424eb"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F3",
+    "commit": "e433826b70f83593ec9084468afe1f1f927154d4",
+    "source": "LICENSE",
+    "destination": "docs/origins/2TIAOA-CAP01-F3/LICENSE",
+    "sha256": "0f938532544e022ec60a35c847b8b3662b2813c3d8499fbdb1a54d2988412299"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardioia-visao-computacional-fase4",
+    "commit": "106c31c69c43af83be00fd25aa8e230e6899a296",
+    "source": "mobile/backend/app.py",
+    "destination": "docs/origins/cardioia-visao-computacional-fase4/mobile/backend/app.py",
+    "sha256": "c395167f361458551fe9583ab7848681eed5b3013361b9600778c6fe617aeb6d"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardioia-visao-computacional-fase4",
+    "commit": "106c31c69c43af83be00fd25aa8e230e6899a296",
+    "source": "mobile/app/App.js",
+    "destination": "docs/origins/cardioia-visao-computacional-fase4/mobile/app/App.js",
+    "sha256": "b28443e5c5ce348e8cf3eaa12a9b5b135cb2d1f8dd55abf1bdbffcee1ae08fb0"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardioia-visao-computacional-fase4",
+    "commit": "106c31c69c43af83be00fd25aa8e230e6899a296",
+    "source": "docs/resultados_run.json",
+    "destination": "docs/origins/cardioia-visao-computacional-fase4/docs/resultados_run.json",
+    "sha256": "08d8ee3d083991784f9ae22e63984b9f7f4091c984a18890c527327427a376bc"
+  },
+  {
+    "repository": "https://github.com/YanCotta/cardioia-visao-computacional-fase4",
+    "commit": "106c31c69c43af83be00fd25aa8e230e6899a296",
+    "source": "LICENSE",
+    "destination": "docs/origins/cardioia-visao-computacional-fase4/LICENSE",
+    "sha256": "56c2fbc93a7e6b1dba681d5a8b774a3cac06c92657f439ca54a238a44d0e6623"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F5",
+    "commit": "d00460ad5e47402532e2cc74f8ca0e00476d4233",
+    "source": "Ir além 1/src/extracao_clinica_ia.ipynb",
+    "destination": "docs/origins/2TIAOA-CAP01-F5/Ir além 1/src/extracao_clinica_ia.ipynb",
+    "sha256": "a282312dadbede2f5c27a9ba7a057c02bca4d604e4825cd6ed05bb20c76bd6b6"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F5",
+    "commit": "d00460ad5e47402532e2cc74f8ca0e00476d4233",
+    "source": "document/parte2-arquitetura-e-integracao.md",
+    "destination": "docs/origins/2TIAOA-CAP01-F5/document/parte2-arquitetura-e-integracao.md",
+    "sha256": "94154889cb204cc4b9de87b3902e9fb1d1eb5920d6977cabed8a93c6eb5fa0c5"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F5",
+    "commit": "d00460ad5e47402532e2cc74f8ca0e00476d4233",
+    "source": "src/part1-watson/services/watson_service.py",
+    "destination": "docs/origins/2TIAOA-CAP01-F5/src/part1-watson/services/watson_service.py",
+    "sha256": "064a8d9d2b5ee7d8774ff44cc390a424f5b8162c38749bc6c8a2cbabadf0d841"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F5",
+    "commit": "d00460ad5e47402532e2cc74f8ca0e00476d4233",
+    "source": "LICENSE",
+    "destination": "docs/origins/2TIAOA-CAP01-F5/LICENSE",
+    "sha256": "0f938532544e022ec60a35c847b8b3662b2813c3d8499fbdb1a54d2988412299"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "src/agents/orchestrator.py",
+    "destination": "docs/origins/2TIAOA-CAP01-F6/src/agents/orchestrator.py",
+    "sha256": "78473cad1cc6b21cdfaa3a2b329fd717b8932783aa978007521394718d17fdfc"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "src/agents/planner_agent.py",
+    "destination": "docs/origins/2TIAOA-CAP01-F6/src/agents/planner_agent.py",
+    "sha256": "2608de052223df92ae3d289a5b5f2e8eba5403e95ee6af0527ee85a90ac92f8f"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "src/train-validation-ml/generation_data.py",
+    "destination": "docs/origins/2TIAOA-CAP01-F6/src/train-validation-ml/generation_data.py",
+    "sha256": "60d0ac7353dc9bd7f96cab5a653d7b342b5334bcc5da596cdaf8ed076e26aa23"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "src/train-validation-ml/train_model.py",
+    "destination": "docs/origins/2TIAOA-CAP01-F6/src/train-validation-ml/train_model.py",
+    "sha256": "abbe81e846d8c3bec6b3b05e0ffa4d31aa68bd7a9ea5615cb1b29f2f098921a1"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "docs/images/model_metrics.json",
+    "destination": "docs/origins/2TIAOA-CAP01-F6/docs/images/model_metrics.json",
+    "sha256": "ee944b0d30ec091fe2fe4502fa954abab04bca549717568916e761520ee79893"
+  },
+  {
+    "repository": "https://github.com/Phaeld/2TIAOA-CAP01-F6",
+    "commit": "ac7bef8d747e4231bea3729b6a64507912310bfc",
+    "source": "LICENSE",
+    "destination": "docs/origins/2TIAOA-CAP01-F6/LICENSE",
+    "sha256": "0f938532544e022ec60a35c847b8b3662b2813c3d8499fbdb1a54d2988412299"
+  }
+]

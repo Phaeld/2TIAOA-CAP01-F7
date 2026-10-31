@@ -1,0 +1,5 @@
+-r requirements.in
+pytest>=8,<10
+httpx2==2.16.0
+reportlab>=4,<5
+ruff>=0.12,<1
