@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-31T15:20:37.096325+00:00",
+  "api_url": "https://cardioia-api-6efu.onrender.com",
+  "checks_passed": [
+    "public health",
+    "private dashboard",
+    "public login",
+    "sensor normal",
+    "sensor alert",
+    "sensor emergency",
+    "duplicate retry",
+    "event conflict",
+    "sensor rejects missing key",
+    "dashboard matches device event",
+    "history contains readings",
+    "original phase-six model",
+    "phase-two text model",
+    "real Gemini through public API",
+    "production CORS",
+    "free profile vision disabled"
+  ],
+  "profile": "free_core",
+  "synthetic_data_only": true
+}

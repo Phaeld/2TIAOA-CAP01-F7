@@ -2,6 +2,10 @@
 
 Um backend Python, Web na Vercel e APK via Expo EAS. Não há banco externo obrigatório.
 
+## Ambiente publicado em 31/10/2026
+
+Web: https://cardioia-fiap-final.vercel.app. API: https://cardioia-api-6efu.onrender.com. Gemini validado pela API pública e pela Web. CI/CD GitHub Actions → Vercel comprovado: [execução](https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/runs/41214343191). Render: `srv-dbj0d6flk1mc73ftu9g0`, plano `free`, região Virginia, branch `main`, auto-deploy após checks. Segredos estão nos serviços e no GitHub Actions, nunca no código.
+
 ## Backend Render
 
 Raiz do repositório como contexto, `Backend/Dockerfile`, health check `/health`, porta `$PORT`, um worker.
@@ -30,12 +34,11 @@ Validar URL em janela anônima, login, navegação SPA, atualização de leitura
 cd Mobile
 npm ci
 npx eas-cli login
-npx eas-cli init
-npx eas-cli env:create --environment preview --name EXPO_PUBLIC_API_URL --value https://<backend> --visibility plaintext
+npx eas-cli env:set --environment preview --name EXPO_PUBLIC_API_URL --value https://<backend> --visibility plaintext
 npx eas-cli build --platform android --profile preview
 ```
 
-`eas init` grava o ID real do projeto. Nunca inserir UUID fictício. A URL da API é incorporada ao APK; alterá-la exige novo build. Não usar localhost na entrega móvel.
+O projeto já está vinculado a `yancotta/cardioia-fiap-final` em `app.json`; não executar `eas init` novamente. A URL da API é incorporada ao APK; alterá-la exige novo build. Não usar localhost na entrega móvel.
 
 Ao terminar, registrar link do build e APK em `docs/DELIVERY.md` e README. Baixar no Android, permitir instalação da fonte quando solicitado, instalar e testar login e dados. Registrar aparelho, Android, data e resultado. Bundle exportado/Expo Go não substitui APK em aparelho físico.
 
@@ -49,8 +52,8 @@ Fontes: [Vercel](https://vercel.com/docs/project-configuration/vercel-json), [EA
 
 ## CI/CD via GitHub Actions
 
-A conexão Git direta Vercel → repositório Phaeld não foi autorizada pela integração. Alternativa preparada: job `deploy-web` após backend/web/mobile passarem em cada push de `main`. Configurar secret `VERCEL_TOKEN`, variables `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID`, e `CARDIOIA_DEPLOY_ENABLED=true` somente após o backend e `VITE_API_URL` estarem prontos. Sem essa variável, o deploy é explicitamente ignorado; testes/builds continuam ativos. Isso ainda não comprova CD em produção.
+A conexão Git direta Vercel → repositório Phaeld não foi autorizada pela integração. Alternativa preparada: job `deploy-web` após backend/web/mobile passarem em cada push de `main`. Configurar secret `VERCEL_TOKEN`, variables `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID`, e `CARDIOIA_DEPLOY_ENABLED=true` somente após o backend e `VITE_API_URL` estarem prontos. Sem essa variável, o deploy é explicitamente ignorado; testes/builds continuam ativos. A variável está habilitada neste ambiente e a publicação por push foi validada.
 
-Projeto Vercel criado: `fiap-fase-7/cardioia-fiap-final`. Projeto Expo criado: https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final. A sessão OAuth da CLI Vercel não permite criar tokens; o responsável deve criar um token de deploy em Account Settings > Tokens e salvá-lo localmente com `python3 scripts/configure_services.py --provider vercel`. Usar escopo do projeto/equipe FIAP quando disponível.
+Projeto Vercel criado: `fiap-fase-7/cardioia-fiap-final`. Projeto Expo criado: https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final. A sessão OAuth da CLI Vercel não permite criar tokens; em uma reinstalação, criar um token de deploy em Account Settings > Tokens e salvá-lo localmente com `python3 scripts/configure_services.py --provider vercel`. Usar escopo do projeto/equipe FIAP quando disponível.
 
 Gemini padrão atualizado para `gemini-3.5-flash-lite`, também usado na F6. O acesso a modelos 2.5 é restrito para novos projetos: [nota oficial de 18/09/2026](https://ai.google.dev/gemini-api/docs/changelog?release=09-18-2026).

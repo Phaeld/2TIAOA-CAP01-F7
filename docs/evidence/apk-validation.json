@@ -1,0 +1,12 @@
+{
+  "build_id": "01b49027-ce04-4310-8c76-30e3ada07c04",
+  "build_status": "FINISHED",
+  "file": "CardioIA-preview.apk",
+  "bytes": 56987279,
+  "sha256": "8b9e556c0c01dab7dd79ea7675fc493f254f57bb99ade922a3fab02e07868437",
+  "zip_integrity": "passed",
+  "package_id_present": true,
+  "production_api_embedded": true,
+  "apk_signature_block_present": true,
+  "physical_device_test": "pending_Raphael_or_teammate"
+}

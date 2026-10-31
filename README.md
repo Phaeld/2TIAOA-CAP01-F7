@@ -6,16 +6,25 @@
 
 ## Estado da entrega
 
-Código integrado implementado, validado localmente e aprovado no CI remoto. Publicação, APK instalado, Wokwi e evidências finais ainda precisam ser concluídos. Estado detalhado em [docs/DELIVERY.md](docs/DELIVERY.md).
+Web e backend publicados, Gemini validado e APK assinado gerado. Testes locais e CI/CD remoto aprovados. Instalação em Android físico, Wokwi, vídeo e fechamento da entrega ainda precisam ser concluídos. Estado detalhado em [docs/DELIVERY.md](docs/DELIVERY.md).
 
 | Entregável | Link / estado |
 |---|---|
-| Web Vercel | Pendente de deploy verificado |
+| Web Vercel | https://cardioia-fiap-final.vercel.app |
 | Backend | https://cardioia-api-6efu.onrender.com/docs |
-| EAS / APK | [Projeto Expo](https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final); build pendente |
+| EAS / APK | [Build concluído / QR](https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final/builds/01b49027-ce04-4310-8c76-30e3ada07c04) · [Baixar APK](https://expo.dev/artifacts/eas/FaDIB1IArS8CZvkOeWZqxYtCvV3GeZZCKNhp7r080Qg.apk) |
 | Wokwi | Raphael; [handoff](IoT/README.md) |
 | Relatório | [PDF técnico](docs/relatorio-tecnico.pdf), rascunho a fechar com evidências |
 | Vídeo até 5 min | Pendente; [roteiro](docs/DELIVERY.md) |
+
+Login publicado: `demo@cardioia.local`. Solicitar a senha e a chave IoT a Yan por canal privado. O perfil gratuito pode suspender por inatividade; abrir [health](https://cardioia-api-6efu.onrender.com/health) antes da demonstração e aguardar `status: ok`. Histórico efêmero; visão F4 disponível apenas localmente.
+
+### Evidências do deploy
+
+[CI/CD por push aprovado](https://github.com/Phaeld/2TIAOA-CAP01-F7/actions/runs/41214343191), [API pública: 16 verificações](docs/evidence/public-api-validation.json) e [APK: validação do arquivo](docs/evidence/apk-validation.json).
+
+![Painel publicado na Vercel](docs/evidence/public-dashboard.jpg)
+![GitHub Actions: testes e deploy concluídos](docs/evidence/ci-deploy-success.jpg)
 
 ## Grupo São Paulo e Interior
 
@@ -89,7 +98,17 @@ cp .env.example .env
 npx expo start
 ```
 
-APK: `eas build --platform android --profile preview`, seguindo o [guia](docs/DEPLOYMENT.md). Login, painel, histórico, assistente e imagem usam a mesma API. Testar APK em aparelho Android físico é obrigatório e continua pendente.
+O [APK assinado](https://expo.dev/artifacts/eas/FaDIB1IArS8CZvkOeWZqxYtCvV3GeZZCKNhp7r080Qg.apk) foi gerado por EAS, com pacote `br.com.cardioia.fiap` e a API pública incorporada.
+
+1. Abrir o [build / QR de instalação](https://expo.dev/accounts/yancotta/projects/cardioia-fiap-final/builds/01b49027-ce04-4310-8c76-30e3ada07c04) no Android e baixar o APK.
+2. Permitir a instalação desse arquivo pelo navegador quando o Android solicitar.
+3. Instalar CardioIA, entrar com `demo@cardioia.local` e a senha fornecida por Yan.
+4. Gerar uma leitura na Web ou Wokwi e confirmar os mesmos valores no APK após cerca de 5 segundos. Testar também o assistente.
+5. Registrar aparelho, versão Android, data, resultado e print em `docs/evidence/`. Esse teste físico será feito por Raphael/grupo e continua pendente.
+
+![QR e instruções Expo](docs/evidence/expo-apk-install.jpg)
+
+Para um novo build: `eas build --platform android --profile preview`, seguindo o [guia](docs/DEPLOYMENT.md). Imagem fica desativada no perfil hospedado gratuito.
 
 ### Sensor sem hardware
 
@@ -108,16 +127,18 @@ npm ci --prefix Web && npm run build --prefix Web
 cd Mobile && npm ci && npx expo install --check && npx expo export --platform android
 ```
 
-Validação local inicial: **27 testes**, build Web e bundle Android passando; ResNet50/Grad-CAM executados em smoke de runtime. Contrato Gemini testado com transporte simulado; chamada real requer chave. [Evidências](docs/DELIVERY.md).
+Validação local inicial: **27 testes**, build Web e bundle Android passando; ResNet50/Grad-CAM executados em smoke de runtime. Gemini validado também na API pública e na Web; 16 verificações públicas passaram. [Evidências](docs/DELIVERY.md).
 
 ## Checklist FIAP
 
 - [x] Código React/Vite, React Native/Expo e Python integrados.
 - [x] `vercel.json` SPA, `app.json` domínio invertido, `eas.json` preview/APK.
 - [x] Contrato, arquitetura, migração e roadmap.
-- [ ] Vercel pública e CI/CD Git comprovados.
-- [ ] Backend público, Gemini real e módulos necessários disponíveis.
-- [ ] Link EAS/APK e instalação em aparelho real.
+- [x] Vercel pública e CI/CD Git comprovados.
+- [x] Backend público e Gemini real validados no perfil gratuito.
+- [ ] Hospedagem da visão F4: adiada por decisão do grupo; runtime local validado.
+- [x] Link EAS e APK assinado acessíveis.
+- [ ] Instalação e teste em Android físico (Raphael/grupo).
 - [ ] `IoT/main.py`, Wokwi público e LED/OLED (Raphael).
 - [ ] PDF final ≤5 páginas, prints e vídeo ≤5 min.
 - [ ] Repositório **privado** compartilhado com tutor (proprietário Phaeld).

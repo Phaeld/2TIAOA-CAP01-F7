@@ -2,6 +2,14 @@
 
 O backend está preparado para sua parte. Você continua responsável por `main.py`, sensores, diagrama/pinagem Wokwi, Wi-Fi, feedback visual e link público. `transport.py` é um helper opcional e **não representa a simulação concluída**.
 
+## Ambiente publicado
+
+- API: https://cardioia-api-6efu.onrender.com
+- OpenAPI interativa: https://cardioia-api-6efu.onrender.com/docs
+- Web: https://cardioia-fiap-final.vercel.app
+- Chave `X-Device-Key` e senha do login: solicitar a Yan por canal privado; não estão no repositório.
+- Render gratuito pode suspender por inatividade. Antes da demonstração, abrir `/health` e aguardar `status: ok`. Enquanto inicia, manter retry com backoff e indicação de desconexão. O histórico é efêmero.
+
 ## Contrato estável v1
 
 `POST {API_URL}/api/v1/readings`, `Content-Type: application/json`, header `X-Device-Key: <chave de demonstração>`. Veja `telemetry.example.json` e a documentação interativa `{API_URL}/docs`.
@@ -50,7 +58,7 @@ Na raiz da fase 7, com backend local executando:
 .venv/bin/python scripts/simulate_sensor.py --alert
 ```
 
-O script usa a chave do `.env` local. Para produção, usar `--url https://<backend-publicado>` e a chave correspondente ao ambiente. A URL definitiva e a chave serão entregues separadamente após o deploy; não há URL fictícia funcionando neste documento.
+O script usa a chave do `.env` local. Para produção, usar `--url https://<backend-publicado>` e a chave correspondente ao ambiente. A URL definitiva é `https://cardioia-api-6efu.onrender.com`; use a chave do ambiente publicado, recebida de Yan por canal privado.
 
 ## Aceite conjunto
 
