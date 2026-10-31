@@ -1,0 +1,12 @@
+.git
+.env*
+.venv
+**/node_modules
+**/__pycache__
+**/dist
+docs
+work
+data
+IoT/config.py
+Mobile
+Web

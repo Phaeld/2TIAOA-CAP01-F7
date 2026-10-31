@@ -1,72 +1,127 @@
-# FIAP - Faculdade de Informática e Administração Paulista
+# CardioIA - Fase 7
 
-<p align="center">
-<a href= "https://www.fiap.com.br/"><img src="assets/logo-fiap.png" alt="FIAP - Faculdade de Informática e Admnistração Paulista" border="0" width=40% height=40%></a>
-</p>
+**Coração Sob Controle: da construção de módulos à solução integrada.** MVP acadêmico com sensores simulados, IA e interfaces Web/Android sobre um serviço Python.
 
-<br>
+> Somente dados simulados. O modelo F6 estima risco operacional hospitalar sintético, não risco individual de infarto. Não é dispositivo médico nem substitui avaliação profissional.
 
-# Nome do projeto
+## Estado da entrega
 
-## Nome do grupo
+Código integrado implementado e validado localmente. Publicação, APK instalado, Wokwi e evidências finais ainda precisam ser concluídos. Estado detalhado em [docs/DELIVERY.md](docs/DELIVERY.md).
 
-## 👨‍🎓 Integrantes: 
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do integrante 1</a>
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do integrante 2</a>
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do integrante 3</a> 
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do integrante 4</a> 
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do integrante 5</a>
+| Entregável | Link / estado |
+|---|---|
+| Web Vercel | Pendente de deploy verificado |
+| Backend | Local http://127.0.0.1:8000/docs; URL pública pendente |
+| EAS / APK | Perfil preview configurado; build pendente |
+| Wokwi | Raphael; [handoff](IoT/README.md) |
+| Relatório | [PDF técnico](docs/relatorio-tecnico.pdf), rascunho a fechar com evidências |
+| Vídeo até 5 min | Pendente; [roteiro](docs/DELIVERY.md) |
 
-## 👩‍🏫 Professores:
-### Tutor(a) 
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do Tutor</a>
-### Coordenador(a)
-- <a href="https://www.linkedin.com/company/inova-fusca">Nome do Coordenador</a>
+## Grupo São Paulo e Interior
 
+- Jonas Tadeu V. Fernandes - RM563027
+- Levi Passos Silveira Marques - RM56557
+- Raphael da Silva - RM561452
+- Raphael Dinelli Neto - RM562892
+- Yan Pimental Cotta - RM562836
 
-## 📜 Descrição
+Tutor: Caique Nonato da Silva Bezerra. Coordenador: André Godoi. Prazo: **10/11/2026**. Divisão confirmada: Yan (integração/deploy/interfaces), Raphael (MicroPython/Wokwi); revisão, teste físico e vídeo pelo grupo. Confirmar dados dos integrantes antes da entrega.
 
-*Descreva seu projeto com base no texto do PBL (até 600 palavras)*
+## Arquitetura e documentos
 
+```text
+Sensor → MicroPython/Wokwi → API Python → IA → Web / APK
+              ↑                 ↕          ↳ Gemini + corpus F1
+              └─ LED/OLED        SQLite
+```
 
-## 📁 Estrutura de pastas
+- [Arquitetura e decisões](docs/ARCHITECTURE.md)
+- [Roadmap e critérios de aceite](docs/ROADMAP.md)
+- [Auditoria das seis fases](docs/MIGRATION.md)
+- [Origem e checksums](docs/migration-manifest.json)
+- [Enunciado FIAP](docs/FIAP-requirements.txt)
+- [Deploy e instalação](docs/DEPLOYMENT.md)
 
-Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
+`Backend/`: FastAPI, risco, NLP, Gemini, ResNet50 opcional, SQLite. `Web/`: React/Vite. `Mobile/`: React Native/Expo. `IoT/`: contrato/helper para Raphael. `docs/`: arquitetura, fontes, PDF e evidências. `.github/workflows/ci.yml`: testes e builds por push/PR.
 
-- <b>.github</b>: Nesta pasta ficarão os arquivos de configuração específicos do GitHub que ajudam a gerenciar e automatizar processos no repositório.
+## Executar localmente
 
-- <b>assets</b>: aqui estão os arquivos relacionados a elementos não-estruturados deste repositório, como imagens.
+Python 3.12 e Node 22.12+.
 
-- <b>config</b>: Posicione aqui arquivos de configuração que são usados para definir parâmetros e ajustes do projeto.
+```bash
+git clone https://github.com/Phaeld/2TIAOA-CAP01-F7.git
+cd 2TIAOA-CAP01-F7
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -r Backend/requirements-dev.txt
+python scripts/setup_local.py
+PYTHONPATH=Backend uvicorn cardioia.main:app --host 127.0.0.1 --port 8000
+```
 
-- <b>document</b>: aqui estão todos os documentos do projeto que as atividades poderão pedir. Na subpasta "other", adicione documentos complementares e menos importantes.
+O setup gera credenciais aleatórias em `.env` (ignorado pelo Git). Login: `demo@cardioia.local`, senha em `CARDIOIA_DEMO_PASSWORD`. Não existe senha pública fixa. Gemini: definir `GEMINI_API_KEY` nesse arquivo ou executar `python scripts/configure_services.py`. Sem chave, chat informa modo local.
 
-- <b>scripts</b>: Posicione aqui scripts auxiliares para tarefas específicas do seu projeto. Exemplo: deploy, migrações de banco de dados, backups.
+Em outro terminal:
 
-- <b>src</b>: Todo o código fonte criado para o desenvolvimento do projeto ao longo das 7 fases.
+```bash
+cd Web
+npm ci
+npm run dev
+```
 
-- <b>README.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
+Abrir http://127.0.0.1:5173, entrar e gerar leituras. OpenAPI: http://127.0.0.1:8000/docs. Proxy Vite encaminha `/api` para o backend local.
 
-## 🔧 Como executar o código
+### Visão da fase 4
 
-*Acrescentar as informações necessárias sobre pré-requisitos (IDEs, serviços, bibliotecas etc.) e instalação básica do projeto, descrevendo eventuais versões utilizadas. Colocar um passo a passo de como o leitor pode baixar o seu código e executá-lo a partir de sua máquina ou seu repositório. Considere a explicação organizada em fase.*
+```bash
+pip install -r Backend/requirements-vision.txt
+# definir CARDIOIA_VISION_ENABLED=true no .env e reiniciar backend
+```
 
+ResNet50 treinada versionada; sem Kaggle ou retreino. Upload PNG/JPEG até 5 MB / 16 megapixels. TensorFlow exige memória adicional: consultar perfil completo no guia de deploy.
 
-## 🗃 Histórico de lançamentos
+### Mobile
 
-* 0.5.0 - XX/XX/2024
-    * 
-* 0.4.0 - XX/XX/2024
-    * 
-* 0.3.0 - XX/XX/2024
-    * 
-* 0.2.0 - XX/XX/2024
-    * 
-* 0.1.0 - XX/XX/2024
-    *
+```bash
+cd Mobile
+npm ci
+cp .env.example .env
+# definir EXPO_PUBLIC_API_URL com a URL HTTPS pública
+npx expo start
+```
 
-## 📋 Licença
+APK: `eas build --platform android --profile preview`, seguindo o [guia](docs/DEPLOYMENT.md). Login, painel, histórico, assistente e imagem usam a mesma API. Testar APK em aparelho Android físico é obrigatório e continua pendente.
 
-<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/agodoi/template">MODELO GIT FIAP</a> por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://fiap.com.br">Fiap</a> está licenciado sobre <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+### Sensor sem hardware
 
+```bash
+.venv/bin/python scripts/simulate_sensor.py
+.venv/bin/python scripts/simulate_sensor.py --alert
+```
 
+O contrato de Raphael está em [IoT/README.md](IoT/README.md). `transport.py` não inclui pinagem ou simulação completa.
+
+## Verificação
+
+```bash
+.venv/bin/python -m pytest -q
+npm ci --prefix Web && npm run build --prefix Web
+cd Mobile && npm ci && npx expo install --check && npx expo export --platform android
+```
+
+Validação local inicial: **23 testes**, build Web e bundle Android passando; ResNet50/Grad-CAM executados em smoke de runtime. Contrato Gemini testado com transporte simulado; chamada real requer chave. [Evidências](docs/DELIVERY.md).
+
+## Checklist FIAP
+
+- [x] Código React/Vite, React Native/Expo e Python integrados.
+- [x] `vercel.json` SPA, `app.json` domínio invertido, `eas.json` preview/APK.
+- [x] Contrato, arquitetura, migração e roadmap.
+- [ ] Vercel pública e CI/CD Git comprovados.
+- [ ] Backend público, Gemini real e módulos necessários disponíveis.
+- [ ] Link EAS/APK e instalação em aparelho real.
+- [ ] `IoT/main.py`, Wokwi público e LED/OLED (Raphael).
+- [ ] PDF final ≤5 páginas, prints e vídeo ≤5 min.
+- [ ] Repositório **privado** compartilhado com tutor (proprietário Phaeld).
+
+## Autoria e licenças
+
+Mantida a licença do repositório/template FIAP. Fontes migradas preservam autoria em `docs/origins`; manifesto identifica cada origem. Dados/modelos das entregas anteriores são usados no contexto acadêmico, sem alegação de validação clínica.

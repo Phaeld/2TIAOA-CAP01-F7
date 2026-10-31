@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "CardioIA",
+    "slug": "cardioia-fiap-final",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {"resizeMode":"contain","backgroundColor":"#0c3035"},
+    "android": {"package":"br.com.cardioia.fiap","versionCode":1,"permissions":[],"blockedPermissions":["android.permission.RECORD_AUDIO"]},
+    "plugins": ["expo-secure-store", ["expo-image-picker", {"photosPermission":"Selecione uma radiografia de teste para a demonstração acadêmica.","microphonePermission":false,"cameraPermission":false}]]
+  }
+}

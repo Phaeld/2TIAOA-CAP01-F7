@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "event_id": "esp32-boot001-000001",
+  "device_id": "esp32-001",
+  "patient_id": "demo-001",
+  "temperature_c": 36.6,
+  "heart_rate_bpm": 76,
+  "movement_detected": true,
+  "emergency_button_pressed": false
+}

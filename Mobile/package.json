@@ -1,0 +1,8 @@
+{
+  "name": "cardioia-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {"start":"expo start","android":"expo start --android","check":"expo-doctor","export:android":"expo export --platform android"},
+  "dependencies": {"expo":"~54.0.38","expo-image-picker":"~17.0.11","expo-secure-store":"~15.0.8","expo-status-bar":"~3.0.9","react":"19.1.0","react-native":"0.81.5"}
+}
